@@ -120,7 +120,8 @@ async function main() {
         };
       }),
     });
-  });
+    // Generous limits: the seed may run against a remote database with high latency.
+  }, { maxWait: 15_000, timeout: 30_000 });
 
   console.log(`Seeded ${tasks.length} tasks for ${DEMO_EMAIL} / ${DEMO_PASSWORD}`);
 }
